@@ -36,6 +36,7 @@ main {
     margin-top: 90px;
     text-transform: lowercase;
     resize: none;
+    width: 100%;
 }
 
 ::placeholder {
@@ -49,23 +50,24 @@ main {
 
 .mensaje {
     background: white;
-    background-image: url("../img/Muñeco.png");
+    background-image: url("../img/muñeco2.png");
     background-repeat: no-repeat;
     border: none;
     border-radius: 24px;
     color: #0a3871;
-    margin-left: 98px;
-    margin-top: 20px;
-    padding-left: 20px;
-    position: fixed;
+    margin-left: 20px;
+    margin-top: 20px;   
+    padding: 20px;  
     text-transform: lowercase;
     pointer-events: none;
     resize: none;
+    width: 336px;
+    height: 450px;
 }
 
 .mensaje:focus {
     outline: none;
-}
+}   
 
 .botones {
     display: flex;
@@ -96,16 +98,18 @@ main {
 }
 
 .btn-copiar {
+    background-color: white;
     border: 1px solid #0a3871;
     border-radius: 24px;
     color: #0a3871;
     cursor: pointer;
     height: 67px;
-    margin-left: 108px;
-    margin-top: 402px;
-    position: absolute;
+    position: fixed;
+    margin-top: -100px;
     font-size: 18px;
-    width: 336px;
+    margin-left: 40px;
+    width: 300px;
+    display: none;
 }
 
 .informacion {

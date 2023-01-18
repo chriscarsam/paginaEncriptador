@@ -14,7 +14,8 @@ function encriptar(){
         
             document.getElementById("mensaje").style.background = "white";
             document.getElementById("mensaje").innerHTML = cifrar;  
-            document.getElementById("informacion").innerHTML = "";                       
+            document.getElementById("informacion").innerHTML = "";      
+            document.getElementById("copiar").style.display = "block";                 
         } else {
             document.getElementById("text-area").value = "";         
             document.getElementById("informacion").innerHTML = "Solo letras minúsculas y sin acentos";           
