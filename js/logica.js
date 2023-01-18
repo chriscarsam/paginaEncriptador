@@ -24,15 +24,15 @@ function encriptar(){
             cifrar = texto.replaceAll(letras[0], llaves[0]).replaceAll(letras[1], llaves[1]).replaceAll(letras[2], llaves[2]).replaceAll(letras[3], llaves[3]).replaceAll(letras[4], llaves[4]);
         
             document.getElementById("mensaje").style.background = "white";
-            document.getElementById("mensaje").innerHTML = cifrar;    
-            document.getElementById("informacion").style.display = "none";  
+            document.getElementById("mensaje").innerHTML = cifrar;  
+            document.getElementById("informacion").innerHTML = "";                       
         } else {
             document.getElementById("text-area").value = "";         
-            document.getElementById("informacion").style.display = "contents";           
+            document.getElementById("informacion").innerHTML = "Solo letras minúsculas y sin acentos";           
         }
 
     } else {
-        alert("Ingresa un texto");
+        document.getElementById("informacion").innerHTML = "! Ingrese un texto";  
     }
 }
 
@@ -46,7 +46,7 @@ function desencriptar(){
         document.getElementById("mensaje").innerHTML = cifrar;
     
     } else {
-        alert("Ingresa un texto");
+        document.getElementById("informacion").innerHTML = "! Ingrese un texto";
     }
 }
 
