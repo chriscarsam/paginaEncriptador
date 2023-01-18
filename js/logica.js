@@ -1,7 +1,7 @@
 var llaves = ["enter", "imes", "ai", "ober", "ufat"];
 var letras = ["e", "i", "a", "o", "u"];
 var texto, cifrar, result;
-var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?áéíóú]+/;
+var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?áéíóú0-9]/;
 
 
 function validar(texto){    
@@ -17,13 +17,19 @@ function validar(texto){
 function encriptar(){
     
     texto = document.getElementById("text-area").value;    
-
+    result = format.test(texto);
     
     if(texto != ""){
-        cifrar = texto.replaceAll(letras[0], llaves[0]).replaceAll(letras[1], llaves[1]).replaceAll(letras[2], llaves[2]).replaceAll(letras[3], llaves[3]).replaceAll(letras[4], llaves[4]);
-    
-    document.getElementById("mensaje").style.background = "white";
-    document.getElementById("mensaje").innerHTML = cifrar;    
+        if(!result){
+            cifrar = texto.replaceAll(letras[0], llaves[0]).replaceAll(letras[1], llaves[1]).replaceAll(letras[2], llaves[2]).replaceAll(letras[3], llaves[3]).replaceAll(letras[4], llaves[4]);
+        
+            document.getElementById("mensaje").style.background = "white";
+            document.getElementById("mensaje").innerHTML = cifrar;    
+            document.getElementById("informacion").style.display = "none";  
+        } else {
+            document.getElementById("text-area").value = "";         
+            document.getElementById("informacion").style.display = "contents";           
+        }
 
     } else {
         alert("Ingresa un texto");
