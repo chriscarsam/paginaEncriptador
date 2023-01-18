@@ -3,17 +3,6 @@ var letras = ["e", "i", "a", "o", "u"];
 var texto, cifrar, result;
 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?áéíóú0-9]/;
 
-
-function validar(texto){    
-        result = format.test(texto);          
-        
-        if(result){
-            document.getElementById("text-area").value = "";                            
-        } 
-
-}
-
-
 function encriptar(){
     
     texto = document.getElementById("text-area").value;    
