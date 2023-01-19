@@ -69,3 +69,7 @@ function copiar(){
         document.getElementById("warning").style.opacity = "0"    
     } 
 }
+
+function refrescar(){
+    location.reload();
+}
