@@ -4,33 +4,30 @@
     box-sizing: border-box;   
 }
 body {
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 32px;
-    background-color: yellow;
+    font-family: 'Ubuntu', sans-serif;
+    background: #F3F5FC;   
     display: flex;
-    flex-flow: column;     
-    align-items: center;         
+    flex-flow: column nowrap;     
+    align-items: center;        
 }
 
-header {    
-    background-color: red;      
+header {            
     width: 80%;
     margin-top: 30px;
 }
 
 .logo {        
-    width: 10%;
+    width: 8%;
 }
 
-main {    
-    background-color: #6aa4df;
+main {        
     display: flex;
     flex-flow: row nowrap;   
     width: 60%; 
 }
 
 .text-area {
+    background-color: #F3F5FC;
     border: none;
     color: #0a3871;
     margin-top: 90px;
@@ -81,7 +78,7 @@ main {
     color: white;
     cursor: pointer;
     height: 67px;
-    font-size: 18px;
+    font-size: 16px;
     margin-right: 10px;
     width: 328px;
 }
@@ -93,7 +90,7 @@ main {
     color: #0a3871;
     cursor: pointer;
     height: 67px;
-    font-size: 18px;    
+    font-size: 16px;    
     width: 328px;
 }
 
@@ -106,7 +103,7 @@ main {
     height: 67px;
     position: fixed;
     margin-top: -100px;
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 40px;
     width: 300px;
     display: none;
@@ -116,3 +113,25 @@ main {
     color: #495057;
     font-size: 18px;            
 }
+
+.footer {   
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+    .pie{
+        /* background: #A0E4CB; */
+        width: 500px;     
+        text-align: center;   
+    }
+    .pie h5{
+        color: #0A3871;  
+        letter-spacing: 1px;      
+    }
+    .pie p{
+        color: #0A3871;  
+        letter-spacing: 1px;      
+    }
+    .pie img {            
+        height: 30px;               
+    } 
