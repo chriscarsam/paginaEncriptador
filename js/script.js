@@ -1,6 +1,6 @@
 var llaves = ["enter", "imes", "ai", "ober", "ufat"];           
 var letras = ["e", "i", "a", "o", "u"];
-var texto, cifrar, result;
+var texto, texto2, cifrar, result;
 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?áéíóú0-9]/;    //format contiene una expresión recular para validar los caracteres especiales y números.
 
 function encriptar(){
@@ -42,21 +42,45 @@ function encriptar(){
 
 function desencriptar(){
   
+    texto2 = document.getElementById("text-area").value;
     texto = document.getElementById("mensaje").value;  
+    result = format.test(texto2);
+    
+    if(texto2 != "" && !result ){
+        if(texto2.includes(llaves[0]) || texto2.includes(llaves[1]) || texto2.includes(llaves[2]) || texto2.includes(llaves[3]) || texto2.includes(llaves[4])){
+            document.getElementById("mensaje").style.background = "white";
+            document.getElementById("informacion").innerHTML = "Ingrese el texto";
+            document.getElementById("copiar").style.display = "block"; 
+            texto = texto2;
+            console.log("texto2")
+        } else {
+            document.getElementById("text-area").value = "";             
+        }
+    }
    
-    if(texto != "" ){   // Validar que el campo no este vacío.
+    if(texto != ""){   // Validar que el campo no este vacío.       
+        if(!result){             
+            cifrar = texto.replaceAll(llaves[0], letras[0]).replaceAll(llaves[1], letras[1]).replaceAll(llaves[2], letras[2]).replaceAll(llaves[3], letras[3]).replaceAll(llaves[4], letras[4]); //cifrar, desencripta el texto ingresado.
+    
+            document.getElementById("informacion").innerHTML = "Descencriptar";  
+            document.getElementById("mensaje").innerHTML = cifrar;
+            console.log("texto desencripta");
 
-        cifrar = texto.replaceAll(llaves[0], letras[0]).replaceAll(llaves[1], letras[1]).replaceAll(llaves[2], letras[2]).replaceAll(llaves[3], letras[3]).replaceAll(llaves[4], letras[4]); //cifrar, desencripta el texto ingresado.
+          } else {
 
-        document.getElementById("informacion").innerHTML = "Descencriptar";  
-        document.getElementById("mensaje").innerHTML = cifrar;        
+            document.getElementById("text-area").value = "";            // Se limpia el text-area
+            document.getElementById("informacion").innerHTML = "Solo letras minúsculas y sin acentos"; 
+            document.getElementById("warning").style.opacity = "100%"     
+            document.getElementById("check").style.opacity = "0";       
+
+        }
     
     } else {   
 
-        document.getElementById("informacion").innerHTML = "Ingrese el texto";
+        document.getElementById("informacion").innerHTML = "Solo letras minúsculas y sin acentos";
         document.getElementById("warning").style.opacity = "60%"
         document.getElementById("check").style.opacity = "0";
-
+        document.getElementById("text-area").value = "";         
     }
 }
 
