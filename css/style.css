@@ -109,10 +109,23 @@ main {
     display: none;
 }
 
+.message {
+    display: flex;
+}
+    .message #warning {
+        height: 30px; 
+        opacity: 0;
+    }
+
+    .message #check {
+        height: 30px; 
+        opacity: 0;
+    }
+
 .informacion {
     color: #495057;
     font-size: 18px;            
-}
+}    
 
 .footer {   
     display: flex;
