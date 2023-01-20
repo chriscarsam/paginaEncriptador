@@ -1,40 +1,50 @@
-var llaves = ["enter", "imes", "ai", "ober", "ufat"];
-var letras = ["e", "i", "a", "o", "u"];
-var texto, texto2, cifrar, result;
-var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?áéíóú0-9]/;    //format contiene una expresión recular para validar los caracteres especiales y números.
+const llaves = ["enter", "imes", "ai", "ober", "ufat"];
+const letras = ["e", "i", "a", "o", "u"];
+const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?áéíóú0-9]/;    //format contiene una expresión recular para validar los caracteres especiales y números.
 
-function encriptar() {
+let texto, texto2, cifrar, result;
 
-    texto = document.getElementById("text-area").value;
+// Selección de elementos.
+let mensaje =  document.getElementById("mensaje");
+let textArea = document.getElementById("text-area");
+let informacion = document.getElementById("informacion");
+let btnCopiar = document.getElementById("copiar");
+let warning = document.getElementById("warning");
+let check = document.getElementById("check");
+
+
+function encriptar() {    
+    
+    texto = textArea.value;
     result = format.test(texto); //Verifica que el texto contenga caracteres especiales o números, retorna un booleano True o False.
 
     if (texto != "") { // Validar que el campo no este vacío.
         if (!result) { // Válida si la variable es (False) para continuar con el cifrado
 
-            cifrar = texto.replaceAll(letras[0], llaves[0]).replaceAll(letras[1], llaves[1]).replaceAll(letras[2], llaves[2]).replaceAll(letras[3], llaves[3]).replaceAll(letras[4], llaves[4]); //cifrar encripta el texto ingresado
+            cifrar = texto.replaceAll(letras[0], llaves[0]).replaceAll(letras[1], llaves[1]).replaceAll(letras[2], llaves[2]).replaceAll(letras[3], llaves[3]).replaceAll(letras[4], llaves[4]);    //cifrar encripta el texto ingresado
 
-            document.getElementById("mensaje").style.background = "white";      //textarea (mensaje) se asigna el color blanco.
-            document.getElementById("mensaje").innerHTML = cifrar;              // Se asigna los datos cifrados al texarea (mensaje) para que se muestren.
-            document.getElementById("informacion").innerHTML = "";              // Se limpia el mensaje información
-            document.getElementById("copiar").style.display = "block";          // Aparece el botón copiar
-            document.getElementById("warning").style.opacity = "0";             // Se asigna la opacidad 0 a la imagen warning.
-            document.getElementById("check").style.opacity = "60%";             // Se asigna la opacidad 60% a la imagen check.
-            document.getElementById("informacion").innerHTML = "Encriptar";
+            mensaje.style.background = "white";      //textarea (mensaje) se asigna el color blanco.
+            mensaje.innerHTML = cifrar;              // Se asigna los datos cifrados al texarea (mensaje) para que se muestren.
+            
+            btnCopiar.style.display = "block";        // Aparece el botón copiar
+            warning.style.opacity = "0";             // Se asigna la opacidad 0 a la imagen warning.
+            check.style.opacity = "60%";             // Se asigna la opacidad 60% a la imagen check.
+            informacion.innerHTML = "Encriptar";
 
         } else {
 
-            document.getElementById("text-area").value = "";            // Se limpia el text-area
-            document.getElementById("informacion").innerHTML = "Solo letras minúsculas y sin acentos";
-            document.getElementById("warning").style.opacity = "100%"
-            document.getElementById("check").style.opacity = "0";
+            textArea.value = "";                     // Se limpia el text-area
+            informacion.innerHTML = "Solo letras minúsculas y sin acentos";
+            warning.style.opacity = "100%"
+            check.style.opacity = "0";
 
         }
 
     } else {
 
-        document.getElementById("informacion").innerHTML = "Ingrese el texto";
-        document.getElementById("warning").style.opacity = "40%";
-        document.getElementById("check").style.opacity = "0";
+        informacion.innerHTML = "Ingrese el texto";
+        warning.style.opacity = "40%";
+        check.style.opacity = "0";
 
     }
 
@@ -42,20 +52,20 @@ function encriptar() {
 
 function desencriptar() {
 
-    texto2 = document.getElementById("text-area").value;
-    texto = document.getElementById("mensaje").value;
+    texto2 = textArea.value;
+    texto = mensaje.value;
     result = format.test(texto2);
 
     if (texto2 != "" && !result) {
         if (texto2.includes(llaves[0]) || texto2.includes(llaves[1]) || texto2.includes(llaves[2]) || texto2.includes(llaves[3]) || texto2.includes(llaves[4])) {
 
-            document.getElementById("mensaje").style.background = "white";
-            document.getElementById("informacion").innerHTML = "Ingrese el texto";
-            document.getElementById("copiar").style.display = "block";
+            mensaje.style.background = "white";
+            informacion.innerHTML = "Ingrese el texto";
+            btnCopiar.style.display = "block";
             texto = texto2;
 
         } else {
-            document.getElementById("text-area").value = "";
+            textArea.value = "";
         }
     }
 
@@ -63,32 +73,32 @@ function desencriptar() {
         if (!result) {
             cifrar = texto.replaceAll(llaves[0], letras[0]).replaceAll(llaves[1], letras[1]).replaceAll(llaves[2], letras[2]).replaceAll(llaves[3], letras[3]).replaceAll(llaves[4], letras[4]); //cifrar, desencripta el texto ingresado.
 
-            document.getElementById("informacion").innerHTML = "Descencriptar";
-            document.getElementById("mensaje").innerHTML = cifrar;
+            informacion.innerHTML = "Descencriptar";
+            mensaje.innerHTML = cifrar;
 
         } else {
 
-            document.getElementById("text-area").value = "";            // Se limpia el text-area
-            document.getElementById("informacion").innerHTML = "Solo letras minúsculas y sin acentos";
-            document.getElementById("warning").style.opacity = "100%"
-            document.getElementById("check").style.opacity = "0";
+            textArea.value = "";            // Se limpia el text-area
+            informacion.innerHTML = "Solo letras minúsculas y sin acentos";
+            warning.style.opacity = "100%"
+            check.style.opacity = "0";
 
         }
 
     } else {
 
-        document.getElementById("informacion").innerHTML = "Solo letras minúsculas y sin acentos";
-        document.getElementById("warning").style.opacity = "60%"
-        document.getElementById("check").style.opacity = "0";
-        document.getElementById("text-area").value = "";
+        informacion.innerHTML = "Solo letras minúsculas y sin acentos";
+        warning.style.opacity = "60%"
+        check.style.opacity = "0";
+        textArea.value = "";
     }
 }
 
 
 function copiar() {
 
-    texto2 = document.getElementById("mensaje").value;
-    texto = document.getElementById("mensaje");
+    texto2 = mensaje.value;
+    texto = mensaje;
 
     if (texto2 != "") {
 
@@ -96,10 +106,10 @@ function copiar() {
         texto.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(texto.value);
 
-        document.getElementById("text-area").value = "";
-        document.getElementById("informacion").innerHTML = "Copiar:  " + (texto.value).substr(0, 60) + " ...";
-        document.getElementById("check").style.opacity = "60%";
-        document.getElementById("warning").style.opacity = "0"
+        textArea.value = "";
+        informacion.innerHTML = "Copiar:  " + (texto.value).substr(0, 60) + " ...";
+        check.style.opacity = "60%";
+        warning.style.opacity = "0"
 
     }
 
